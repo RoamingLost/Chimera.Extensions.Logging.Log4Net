@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0-*",
+  "description": "log4net provider for Microsoft.Extensions.Logging",
+  "authors": [ "RoamingLost", "John Stanley" ],
+  "packOptions": {
+    "tags": [ "log4net", "Microsoft.Extensions.Logging", "log", "netcore" ],
+    "projectUrl": "https://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net",
+    "licenseUrl": "https://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net/blob/master/LICENSE",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net"
+    }
+  },
+  "buildOptions": {
+    "debugType": "portable",
+    "warningsAsErrors": true
+  },
+  "dependencies": {
+    "Microsoft.Extensions.Logging.Abstractions": "1.1.0"
+  },
+  "frameworks": {
+    "netstandard1.3": {
+      "dependencies": {
+        //"NETStandard.Library": "1.6.1"
+        "log4net": "2.0.7"
+      }
+    }
+  }
+}
