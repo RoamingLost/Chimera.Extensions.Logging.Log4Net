@@ -1,27 +1,20 @@
 ﻿namespace Chimera.Extensions.Logging.Log4Net
 {
     using System;
-    using System.Collections.Generic;
     using Microsoft.Extensions.Logging;
 
     public class Log4NetProvider : ILoggerProvider
     {
-        private IDictionary<string, ILogger> _loggers = new Dictionary<string, ILogger>();
+        private Log4NetSettings _settings;
+
+        public Log4NetProvider(Log4NetSettings settings)
+        {
+            _settings = settings;
+        }
 
         public ILogger CreateLogger(string categoryName)
         {
-            if (!_loggers.ContainsKey(categoryName))
-            {
-                lock (_loggers)
-                {
-                    if (!_loggers.ContainsKey(categoryName))
-                    {
-                        _loggers[categoryName] = new Log4NetLogger();
-                    }
-                }
-            }
-
-            return _loggers[categoryName];
+            return new Log4NetLogger();
         }
 
         #region IDisposable Support
@@ -34,8 +27,6 @@
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects).
-                    _loggers.Clear();
-                    _loggers = null;
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
