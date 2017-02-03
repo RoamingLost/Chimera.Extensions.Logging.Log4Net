@@ -5,16 +5,22 @@
 
     public class Log4NetProvider : ILoggerProvider
     {
-        private Log4NetSettings _settings;
+        private ILog4NetInitializer _initializer;
 
-        public Log4NetProvider(Log4NetSettings settings)
+        public Log4NetProvider(ILog4NetInitializer initializer)
         {
-            _settings = settings;
+            _initializer = initializer;
         }
 
         public ILogger CreateLogger(string categoryName)
         {
-            return new Log4NetLogger();
+            if (!_initializer.IsInitialized)
+            {
+                return null;
+            }
+            
+            var logger = _initializer.LoggerRepository.GetLogger(categoryName);
+            return new Log4NetLogger(new log4net.Core.LogImpl(logger));
         }
 
         #region IDisposable Support

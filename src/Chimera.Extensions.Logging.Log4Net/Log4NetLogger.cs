@@ -2,9 +2,17 @@
 {
     using System;
     using Microsoft.Extensions.Logging;
+    using log4net;
 
     public class Log4NetLogger : ILogger
     {
+        private ILog _log;
+
+        public Log4NetLogger(ILog log)
+        {
+            _log = log;
+        }
+
         public IDisposable BeginScope<TState>(TState state)
         {
             return null;

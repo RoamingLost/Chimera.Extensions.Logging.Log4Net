@@ -16,6 +16,11 @@ namespace Chimera.Extensions.Logging.Log4Net
             get { return _loggerRepository != null; }
         }
 
+        public ILoggerRepository LoggerRepository
+        {
+            get { return _loggerRepository; }
+        }
+
         public Log4NetInitializer(Log4NetSettings settings)
         {
             if (settings == null)
