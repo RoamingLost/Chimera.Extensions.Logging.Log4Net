@@ -6,6 +6,7 @@
     "tags": [ "log4net", "Microsoft.Extensions.Logging", "log", "netcore" ],
     "projectUrl": "https://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net",
     "licenseUrl": "https://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net/blob/master/LICENSE",
+    "iconUrl": "https://raw.githubusercontent.com/RoamingLost/Chimera.Extensions.Logging.Log4Net/master/icon.png",
     "repository": {
       "type": "git",
       "url": "git://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net"
