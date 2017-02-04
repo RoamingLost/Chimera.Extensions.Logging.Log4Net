@@ -5,21 +5,21 @@
 
     public class Log4NetProvider : ILoggerProvider
     {
-        private ILog4NetInitializer _initializer;
+        private ILog4NetContainer _container;
 
-        public Log4NetProvider(ILog4NetInitializer initializer)
+        public Log4NetProvider(ILog4NetContainer container)
         {
-            _initializer = initializer;
+            _container = container;
         }
 
         public ILogger CreateLogger(string categoryName)
         {
-            if (!_initializer.IsInitialized)
+            if (!_container.IsInitialized)
             {
                 return null;
             }
             
-            var logger = _initializer.LoggerRepository.GetLogger(categoryName);
+            var logger = _container.LoggerRepository.GetLogger(categoryName);
             return new Log4NetLogger(new log4net.Core.LogImpl(logger));
         }
 

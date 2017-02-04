@@ -22,10 +22,10 @@
                 throw new ArgumentNullException(nameof(settings));
             }
 
-            var initializer = new Log4NetInitializer(settings);
-            initializer.Initialize();
+            var container = new Log4NetContainer(settings);
+            container.Initialize();
 
-            loggerFactory.AddProvider(new Log4NetProvider(initializer));
+            loggerFactory.AddProvider(new Log4NetProvider(container));
 
             return loggerFactory;
         }

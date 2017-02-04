@@ -2,7 +2,7 @@ namespace Chimera.Extensions.Logging.Log4Net
 {
     using log4net.Repository;
 
-    public interface ILog4NetInitializer
+    public interface ILog4NetContainer
     {
         bool IsInitialized { get; }
 

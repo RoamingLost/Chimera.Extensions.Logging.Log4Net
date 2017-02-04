@@ -6,7 +6,7 @@ namespace Chimera.Extensions.Logging.Log4Net
     using log4net.Config;
     using log4net.Repository;
 
-    public class Log4NetInitializer : ILog4NetInitializer
+    public class Log4NetContainer : ILog4NetContainer
     {
         private Log4NetSettings _settings;
         private ILoggerRepository _loggerRepository;
@@ -21,7 +21,7 @@ namespace Chimera.Extensions.Logging.Log4Net
             get { return _loggerRepository; }
         }
 
-        public Log4NetInitializer(Log4NetSettings settings)
+        public Log4NetContainer(Log4NetSettings settings)
         {
             if (settings == null)
             {
