@@ -6,21 +6,42 @@ namespace Chimera.Extensions.Logging.Log4Net
     using log4net.Config;
     using log4net.Repository;
 
+    /// <summary>
+    /// Definition of a container for log4net repository initialization and creation.
+    /// </summary>
+    /// <seealso cref="Chimera.Extensions.Logging.Log4Net.ILog4NetContainer" />
     public class Log4NetContainer : ILog4NetContainer
     {
         private Log4NetSettings _settings;
         private ILoggerRepository _loggerRepository;
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is initialized.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance is initialized; otherwise, <c>false</c>.
+        /// </value>
         public bool IsInitialized
         {
             get { return _loggerRepository != null; }
         }
 
+        /// <summary>
+        /// Gets the logger repository.
+        /// </summary>
+        /// <value>
+        /// The logger repository.
+        /// </value>
         public ILoggerRepository LoggerRepository
         {
             get { return _loggerRepository; }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Log4NetContainer"/> class.
+        /// </summary>
+        /// <param name="settings">The log4net settings.</param>
+        /// <exception cref="ArgumentNullException">settings</exception>
         public Log4NetContainer(Log4NetSettings settings)
         {
             if (settings == null)
@@ -31,6 +52,9 @@ namespace Chimera.Extensions.Logging.Log4Net
             _settings = settings;
         }
 
+        /// <summary>
+        /// Initializes this instance of log4net.
+        /// </summary>
         public void Initialize()
         {
             if (IsInitialized) return;
