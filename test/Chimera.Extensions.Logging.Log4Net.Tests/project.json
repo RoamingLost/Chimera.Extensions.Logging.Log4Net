@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "debugType": "portable"
+  },
+  "dependencies": {
+    "System.Runtime.Serialization.Primitives": "4.3.0",
+    "xunit": "2.2.0-beta5-build3474",
+    "dotnet-test-xunit": "2.2.0-preview2-build1029"
+  },
+  "testRunner": "xunit",
+  "frameworks": {
+    "net451": {
+      "dependencies": {
+        "Microsoft.NETCore.Platforms": "1.1.0",
+        "Chimera.Extensions.Logging.Log4Net": {
+          "target": "project"
+        }
+      }
+    },
+    "netcoreapp1.1": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.1.0"
+        },
+        "Chimera.Extensions.Logging.Log4Net": {
+          "target": "project"
+        }
+      },
+      "imports": [
+        "dotnet5.4",
+        "portable-net451+win8"
+      ]
+    }
+  }
+}
