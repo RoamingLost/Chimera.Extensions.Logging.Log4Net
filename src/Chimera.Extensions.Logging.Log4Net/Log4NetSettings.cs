@@ -55,9 +55,9 @@
         /// </summary>
         public Log4NetSettings()
         {
-            Default.GlobalContextProperties.Add("appRoot", Directory.GetCurrentDirectory());
-            Default.ConfigFilePath = "log4net.config";
-            Default.RootRepositoryName = GetDefaultRepositoryName();
+            GlobalContextProperties.Add("appRoot", Directory.GetCurrentDirectory());
+            ConfigFilePath = "log4net.config";
+            RootRepositoryName = GetDefaultRepositoryName();
         }
 
         private static string GetDefaultRepositoryName()
