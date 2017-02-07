@@ -4,6 +4,7 @@ namespace Chimera.Extensions.Logging.Log4Net
     using System.IO;
     using log4net;
     using log4net.Config;
+    using log4net.Core;
     using log4net.Repository;
 
     /// <summary>
@@ -50,6 +51,19 @@ namespace Chimera.Extensions.Logging.Log4Net
             }
 
             _settings = settings;
+        }
+
+        /// <summary>
+        /// Gets the log interface used by applications to log messages into the log4net framework.
+        /// </summary>
+        /// <param name="name">The name of the logger.</param>
+        /// <returns>
+        /// The logging interface.
+        /// </returns>
+        public ILog GetLog(string name)
+        {
+            var logger = LoggerRepository.GetLogger(name);
+            return new LogImpl(logger);
         }
 
         /// <summary>

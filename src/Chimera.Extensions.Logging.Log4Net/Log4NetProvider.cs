@@ -32,8 +32,8 @@
                 return null;
             }
             
-            var logger = _container.LoggerRepository.GetLogger(categoryName);
-            return new Log4NetLogger(new log4net.Core.LogImpl(logger));
+            var logger = _container.GetLog(categoryName);
+            return new Log4NetLogger(logger);
         }
 
         #region IDisposable Support
