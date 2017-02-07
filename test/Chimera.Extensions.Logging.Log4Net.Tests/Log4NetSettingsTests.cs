@@ -30,7 +30,7 @@
         }
 
         [Fact]
-        public void LoggerFactoryCreateLogger()
+        public void LoggerFactoryLogMessage()
         {
             // Arrange
             var logMock = new Mock<ILog>();
@@ -43,9 +43,10 @@
             var factory = new LoggerFactory();
             factory.AddProvider(new Log4NetProvider(containerMock.Object));
             var logger = factory.CreateLogger("test");
+            logger.LogDebug("Test Message");
 
             // Assert
-            Assert.NotNull(logger);
+            logMock.Verify(m => m.Debug(It.IsAny<object>(), It.IsAny<Exception>()), Times.AtLeastOnce);
         }
     }
 }
