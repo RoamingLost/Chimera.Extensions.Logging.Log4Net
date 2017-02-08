@@ -1,9 +1,10 @@
 {
   "version": "1.0.0-*",
-  "description": "log4net provider for Microsoft.Extensions.Logging",
-  "authors": [ "RoamingLost", "John Stanley" ],
+  "description": "log4net logger provider for Microsoft.Extensions.Logging. Compatible with ASP.NET Core and .NET Core official release (dotnet).",
+  "title": "Apache log4net logging extensions for .NET Core",
+  "authors": [ "RoamingLost" ],
   "packOptions": {
-    "tags": [ "log4net", "Microsoft.Extensions.Logging", "log", "netcore" ],
+    "tags": [ "logging", "log4net", "Microsoft.Extensions.Logging", "log", "netcore" ],
     "projectUrl": "https://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net",
     "licenseUrl": "https://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net/blob/master/LICENSE",
     "iconUrl": "https://raw.githubusercontent.com/RoamingLost/Chimera.Extensions.Logging.Log4Net/master/icon.png",
