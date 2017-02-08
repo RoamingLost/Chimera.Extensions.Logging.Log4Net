@@ -1,7 +1,11 @@
 # .NET Core logging extension for log4net
 
-log4net logger provider for Microsoft.Extensions.Logging. Compatible with ASP.NET Core and .NET Core official release (dotnet).
-Refer to the [wiki](https://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net/wiki) for more information.
+Package: [Chimera.Extensions.Logging.Log4Net](http://www.nuget.org/packages/Chimera.Extensions.Logging.Log4Net)
+[![NuGet](http://img.shields.io/nuget/v/Chimera.Extensions.Logging.Log4Net.svg)](http://www.nuget.org/packages/Chimera.Extensions.Logging.Log4Net)
+
+[log4net](https://github.com/apache/log4net) logger provider for [Microsoft.Extensions.Logging](https://github.com/aspnet/Logging). Compatible with ASP.NET Core and .NET Core official release (dotnet).
+
+Routes .NET Core log messages to log4net. Refer to the [wiki](https://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net/wiki) for more information.
 
 ## How to use
 
