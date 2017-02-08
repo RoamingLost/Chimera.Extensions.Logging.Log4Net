@@ -1,9 +1,10 @@
-# ASP.NET Core / .NET Core logging extension for log4net
+# .NET Core logging extension for log4net
 
-Routes .NET Core log messages to log4net. Refer to the [wiki](https://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net/wiki) for more information.
+log4net logger provider for Microsoft.Extensions.Logging. Compatible with ASP.NET Core and .NET Core official release (dotnet).
+Refer to the [wiki](https://github.com/RoamingLost/Chimera.Extensions.Logging.Log4Net/wiki) for more information.
 
-How to use
-----
+## How to use
+
 1. Add dependency in project.json
     ```json
      "dependencies": {
