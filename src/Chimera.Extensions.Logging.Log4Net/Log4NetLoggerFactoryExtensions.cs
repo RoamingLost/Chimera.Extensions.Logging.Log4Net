@@ -1,7 +1,7 @@
-﻿namespace Chimera.Extensions.Logging.Log4Net
+﻿namespace Microsoft.Extensions.Logging
 {
     using System;
-    using Microsoft.Extensions.Logging;
+    using Chimera.Extensions.Logging.Log4Net;
 
     /// <summary>
     /// LoggerFactory extensions for log4net.
