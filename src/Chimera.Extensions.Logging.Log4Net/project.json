@@ -1,5 +1,6 @@
 {
-  "version": "1.0.0-*",
+  "name": "chimera.extensions.logging.log4net",
+  "version": "1.1.1-*",
   "description": "log4net logger provider for Microsoft.Extensions.Logging. Compatible with ASP.NET Core and .NET Core official release (dotnet).",
   "title": "Apache log4net logging extensions for .NET Core",
   "authors": [ "RoamingLost" ],

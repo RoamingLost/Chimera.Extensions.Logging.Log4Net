@@ -12,7 +12,7 @@ Routes .NET Core log messages to log4net. Refer to the [wiki](https://github.com
 1. Add dependency in project.json
     ```json
      "dependencies": {
-        "Chimera.Extensions.Logging.Log4Net": "1.0.0-*"
+        "Chimera.Extensions.Logging.Log4Net": "1.1.1"
       }
     ```
 
