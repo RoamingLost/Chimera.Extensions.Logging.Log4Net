@@ -6,7 +6,7 @@
     /// <summary>
     /// Represents an object that contains log4net configuration settings.
     /// </summary>
-    public class Log4NetSettings
+    public class Log4NetSettings : ILog4NetSettings
     {
         /// <summary>
         /// The default log4net configuration settings.

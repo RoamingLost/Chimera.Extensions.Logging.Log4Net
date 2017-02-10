@@ -13,7 +13,7 @@ namespace Chimera.Extensions.Logging.Log4Net
     /// <seealso cref="Chimera.Extensions.Logging.Log4Net.ILog4NetContainer" />
     public class Log4NetContainer : ILog4NetContainer
     {
-        private Log4NetSettings _settings;
+        private ILog4NetSettings _settings;
         private ILoggerRepository _loggerRepository;
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Chimera.Extensions.Logging.Log4Net
         /// </summary>
         /// <param name="settings">The log4net settings.</param>
         /// <exception cref="ArgumentNullException">settings</exception>
-        public Log4NetContainer(Log4NetSettings settings)
+        public Log4NetContainer(ILog4NetSettings settings)
         {
             if (settings == null)
             {

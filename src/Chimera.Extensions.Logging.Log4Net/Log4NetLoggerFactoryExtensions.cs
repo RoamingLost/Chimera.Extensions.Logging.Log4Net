@@ -26,7 +26,7 @@
         /// <param name="settings">The log4net settings.</param>
         /// <returns>The logger factory.</returns>
         /// <exception cref="ArgumentNullException">loggerFactory or settings</exception>
-        public static ILoggerFactory AddLog4Net(this ILoggerFactory loggerFactory, Log4NetSettings settings)
+        public static ILoggerFactory AddLog4Net(this ILoggerFactory loggerFactory, ILog4NetSettings settings)
         {
             if (loggerFactory == null)
             {
