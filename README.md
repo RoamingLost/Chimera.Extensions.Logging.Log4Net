@@ -1,7 +1,7 @@
 # .NET Core logging extension for log4net
 
-Package: [Chimera.Extensions.Logging.Log4Net](http://www.nuget.org/packages/Chimera.Extensions.Logging.Log4Net)
-[![NuGet](http://img.shields.io/nuget/v/Chimera.Extensions.Logging.Log4Net.svg)](http://www.nuget.org/packages/Chimera.Extensions.Logging.Log4Net)
+Package: [chimera.extensions.logging.log4net](http://www.nuget.org/packages/chimera.extensions.logging.log4net)
+[![NuGet](http://img.shields.io/nuget/v/chimera.extensions.logging.log4net.svg)](http://www.nuget.org/packages/chimera.extensions.logging.log4net)
 
 [log4net](https://github.com/apache/log4net) logger provider for [Microsoft.Extensions.Logging](https://github.com/aspnet/Logging). Compatible with ASP.NET Core and .NET Core official release (dotnet).
 
@@ -12,7 +12,7 @@ Routes .NET Core log messages to log4net. Refer to the [wiki](https://github.com
 1. Add dependency in project.json
     ```json
      "dependencies": {
-        "Chimera.Extensions.Logging.Log4Net": "1.1.1"
+        "chimera.extensions.logging.log4net": "1.1.1"
       }
     ```
 
