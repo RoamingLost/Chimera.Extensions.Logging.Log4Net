@@ -9,8 +9,8 @@ namespace Chimera.Extensions.Logging.Log4Net
     /// </summary>
     public class ConfigurationLog4NetSettings : ILog4NetSettings
     {
-        private IConfiguration _configuration;
-        private IDictionary<string, object> _contextProperties = new Dictionary<string, object>();
+        private readonly IConfiguration _configuration;
+        private readonly IDictionary<string, object> _contextProperties = new Dictionary<string, object>(Log4NetSettings.Default.GlobalContextProperties);
 
         /// <summary>
         /// Gets the global context properties.
@@ -20,27 +20,7 @@ namespace Chimera.Extensions.Logging.Log4Net
         /// </value>
         public IDictionary<string, object> GlobalContextProperties
         {
-            get
-            {
-                var properties = _configuration.GetSection(nameof(GlobalContextProperties));
-                if (properties == null)
-                {
-                    return Log4NetSettings.Default.GlobalContextProperties;
-                }
-
-                var contextProperties = new Dictionary<string, object>(Log4NetSettings.Default.GlobalContextProperties);
-                foreach (var property in properties.GetChildren())
-                {
-                    if (contextProperties.ContainsKey(property.Key))
-                    {
-                        contextProperties.Remove(property.Key);
-                    }
-
-                    contextProperties.Add(property.Key, property.Value);
-                }
-
-                return contextProperties;
-            }
+            get { return _contextProperties; }
         }
 
         /// <summary>
@@ -115,7 +95,32 @@ namespace Chimera.Extensions.Logging.Log4Net
         /// <param name="configuration">The configuration container.</param>
         public ConfigurationLog4NetSettings(IConfiguration configuration)
         {
+            if (configuration == null)
+            {
+                throw new ArgumentNullException(nameof(configuration));
+            }
+
             _configuration = configuration;
+            PopulateGlobalContextProperties();
+        }
+
+        private void PopulateGlobalContextProperties()
+        {
+            var properties = _configuration.GetSection(nameof(GlobalContextProperties));
+            if (properties == null)
+            {
+                return;
+            }
+
+            foreach (var property in properties.GetChildren())
+            {
+                if (_contextProperties.ContainsKey(property.Key))
+                {
+                    _contextProperties.Remove(property.Key);
+                }
+
+                _contextProperties.Add(property.Key, property.Value);
+            }
         }
     }
 }

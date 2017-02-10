@@ -13,7 +13,7 @@ namespace Chimera.Extensions.Logging.Log4Net
     /// <seealso cref="Chimera.Extensions.Logging.Log4Net.ILog4NetContainer" />
     public class Log4NetContainer : ILog4NetContainer
     {
-        private ILog4NetSettings _settings;
+        private readonly ILog4NetSettings _settings;
         private ILoggerRepository _loggerRepository;
 
         /// <summary>

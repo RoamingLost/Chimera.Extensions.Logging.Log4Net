@@ -11,9 +11,9 @@
         /// <summary>
         /// The default log4net configuration settings.
         /// </summary>
-        public static Log4NetSettings Default = new Log4NetSettings();
+        public static ILog4NetSettings Default = new Log4NetSettings();
         
-        private IDictionary<string, object> _contextProperties = new Dictionary<string, object>();
+        private readonly IDictionary<string, object> _contextProperties = new Dictionary<string, object>();
 
         /// <summary>
         /// Gets the global context properties.

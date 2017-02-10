@@ -10,7 +10,7 @@
     /// <seealso cref="Microsoft.Extensions.Logging.ILogger" />
     public class Log4NetLogger : ILogger
     {
-        private ILog _log;
+        private readonly ILog _log;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Log4NetLogger"/> class.

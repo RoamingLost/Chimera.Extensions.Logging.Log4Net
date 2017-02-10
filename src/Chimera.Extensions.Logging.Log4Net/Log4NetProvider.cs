@@ -9,7 +9,7 @@
     /// <seealso cref="Microsoft.Extensions.Logging.ILoggerProvider" />
     public class Log4NetProvider : ILoggerProvider
     {
-        private ILog4NetContainer _container;
+        private readonly ILog4NetContainer _container;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Log4NetProvider"/> class.
