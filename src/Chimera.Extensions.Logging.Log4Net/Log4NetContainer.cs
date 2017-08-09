@@ -83,7 +83,15 @@ namespace Chimera.Extensions.Logging.Log4Net
 
         private ILoggerRepository CreateRootRepository()
         {
-            var loggerRepository = LogManager.CreateRepository(_settings.RootRepositoryName);
+			var loggerRepository = null;
+			try
+			{
+				loggerRepository = LogManager.CreateRepository(_settings.RootRepositoryName);
+			}
+			catch (LogException)
+			{
+				loggerRepository = LogManager.GetRepository(_settings.RootRepositoryName);
+			}
 
             var fileInfo = new FileInfo(Path.GetFullPath(_settings.ConfigFilePath));
             if (_settings.Watch)
