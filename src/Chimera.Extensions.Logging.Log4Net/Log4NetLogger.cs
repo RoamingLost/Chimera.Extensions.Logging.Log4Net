@@ -1,4 +1,8 @@
-﻿namespace Chimera.Extensions.Logging.Log4Net
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Chimera.Extensions.Logging.Log4Net
 {
     using System;
     using Microsoft.Extensions.Logging;
@@ -31,7 +35,9 @@
         /// </returns>
         public IDisposable BeginScope<TState>(TState state)
         {
-            return null;
+            return MapScopeStateToProperties(state)
+                .Select(property => LogicalThreadContext.Stacks[property.Key].Push(property.Value))
+                .AsSafeDisposableDisposingAll();
         }
 
         /// <summary>
@@ -109,6 +115,47 @@
                     _log.Warn($"Encountered unknown log level {logLevel}, writing out as Info.");
                     _log.Info(message, exception);
                     break;
+            }
+        }
+
+
+        private static IEnumerable<KeyValuePair<string, string>> MapScopeStateToProperties(object state)
+        {
+            var items =
+                    state is IEnumerable enumerable
+                    ?
+                    (
+                        enumerable is System.Collections.Specialized.NameValueCollection nvCol
+                        ?
+                            nvCol.AllKeys.Select(key => new KeyValuePair<string, string>(key, nvCol[key]))
+                        :
+                            enumerable
+                    )
+                    :
+                        new[] { state }
+                    ;
+            foreach (var item in items)
+            {
+                switch (item)
+                {
+                    case KeyValuePair<string, string> kvStrStrPair:
+                        yield return kvStrStrPair;
+                        break;
+                    case DictionaryEntry dictionaryEntry:
+                        yield return new KeyValuePair<string, string>(dictionaryEntry.Key?.ToString(), dictionaryEntry.Value?.ToString());
+                        break;
+                    case KeyValuePair<string, object> kvStrObjPair:
+                        yield return new KeyValuePair<string, string>(kvStrObjPair.Key, kvStrObjPair.Value?.ToString());
+                        break;
+                    case KeyValuePair<object, object> kvObjObjPair:
+                        yield return new KeyValuePair<string, string>(kvObjObjPair.Key?.ToString(), kvObjObjPair.Value?.ToString());
+                        break;
+                    case null:
+                        break;
+                    default:
+                        yield return new KeyValuePair<string, string>("Scope", item.ToString());
+                        break;
+                }
             }
         }
     }
